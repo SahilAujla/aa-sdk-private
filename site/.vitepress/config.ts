@@ -24,10 +24,6 @@ export default defineConfig({
       { text: "Introduction", link: "/introduction" },
       { text: "Getting Started", link: "/getting-started" },
       {
-        text: "Packages Overview",
-        link: "/packages/overview",
-      },
-      {
         text: "Using Smart Accounts",
         base: "/smart-accounts",
         items: [
@@ -55,6 +51,10 @@ export default defineConfig({
           { text: "Batching Transactions", link: "/batching-transactions" },
           { text: "Transferring Ownership", link: "/transferring-ownership" },
         ],
+      },
+      {
+        text: "Packages Overview",
+        link: "/packages/overview",
       },
       // Per Package docs
       {
