@@ -51,7 +51,7 @@ export default defineConfig({
               { text: "Externally Owned Account", link: "/eoa" },
             ],
           },
-          { text: "Sponsoring Gas", items: [] },
+          { text: "Sponsoring Gas", link: "/sponsoring-gas" },
           { text: "Batching Transactions", link: "/batching-transactions" },
           { text: "Transferring Ownership", link: "/transferring-ownership" },
         ],
