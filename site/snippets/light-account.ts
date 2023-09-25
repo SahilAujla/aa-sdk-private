@@ -31,3 +31,5 @@ const { hash } = await provider.sendUserOperation({
   data: "0xCallData", // Replace with the desired call data
   value: 0n, // value: bigint or undefined
 });
+
+console.log(hash); // Log the user operation hash
