@@ -24,8 +24,8 @@ The code snippet below demonstrates the usage of Light Account with Account Kit.
 
 ::: tip Note
 Remember to:
+
 1. Replace `"0xYourEOAPrivateKey"` with your actual EOA private key.
 2. Set `"ALCHEMY_API_KEY"` with your unique Alchemy API key.
 3. Adjust the `target` and `data` fields in the `sendUserOperation` function to match your requirements.
-:::
-
+   :::
