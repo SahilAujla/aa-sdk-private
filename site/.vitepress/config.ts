@@ -38,7 +38,6 @@ export default defineConfig({
             link: "/light-account",
             items: [
               { text: "Light Account", link: "/light-account" },
-              { text: "Modular Account", link: "/modular-account" },
               { text: "Using Your Own", link: "/using-your-own" },
             ],
           },
