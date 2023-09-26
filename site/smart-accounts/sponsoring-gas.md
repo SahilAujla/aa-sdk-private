@@ -20,103 +20,17 @@ Gas fees have long been a concern for dApp users. With Alchemy's [Gas Manager](h
 
 Assuming you already have a project set up with the required packages installed, follow these steps to sponsor gas for your users:
 
-### 1. Importing the Required Dependencies
+### 1. Creating the Provider
 
-```ts
-import { AlchemyProvider } from "@alchemy/aa-alchemy"; // [!code focus:5]
-import { LightSmartContractAccount } from "@alchemy/aa-accounts";
-import { LocalAccountSigner, type SmartAccountSigner } from "@alchemy/aa-core";
-import { sepolia } from "viem/chains";
-import { withAlchemyGasManager } from "@alchemy/aa-alchemy"; // Importing `withAlchemyGasManager` from `aa-alchemy` that will be used to link Gas Manager to the Light Account for gas sponsorship
+The first step is to create the provider which can be used to send user operations and interact with the blockchain. The code snippet below shows how to create a provider using `AlchemyProvider`:
 
-const chain = sepolia;
-const PRIVATE_KEY = "0xYourEOAPrivateKey";
-const eoaSigner: SmartAccountSigner =
-  LocalAccountSigner.privateKeyToAccountSigner(`0x${PRIVATE_KEY}`);
-const entryPointAddress = "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789";
+<<< @/snippets/alchemy-provider.ts
 
-const GAS_MANAGER_POLICY_ID = "YourGasManagerPolicyId"; // Gas Manager policy id, get yours at https://dashboard.alchemy.com/gas-manager/policy/create
+You'll need to replace `ALCHEMY_API_KEY` with your unique Alchemy API key. You can get your API key from the [Alchemy dashboard](https://dashboard.alchemy.com/).
 
-let provider = new AlchemyProvider({
-  apiKey: "ALCHEMY_API_KEY", // replace with your alchemy api key of the Alchemy app associated with the Gas Manager, get yours at https://dashboard.alchemy.com/
-  chain,
-  entryPointAddress: entryPointAddress,
-}).connect(
-  (rpcClient) =>
-    new LightSmartContractAccount({
-      entryPointAddress: entryPointAddress,
-      chain: rpcClient.chain,
-      owner: eoaSigner,
-      factoryAddress: "0xDC31c846DA74400C732edb0fE888A2e4ADfBb8b1",
-      rpcClient,
-    })
-);
+### 2. Creating and Using the Gas Manager Policy
 
-// linking provider to Gas Manager so that the user operations sent using this provider are sponsored by the Gas Manager
-provider = withAlchemyGasManager(provider, {
-  policyId: GAS_MANAGER_POLICY_ID,
-  entryPoint: entryPointAddress,
-});
-
-// sends a sponsored user operation from your smart account
-const { hash } = await provider.sendUserOperation({
-  target: "0xTargetAddress",
-  data: "0xCallData",
-  value: 0n, // value: bigint or undefined
-});
-```
-
-### 2. Configuring Your Chain and Signer
-
-Define the chain you want to sponsor user operations on, the Entrypoint contract address and the signer type you want to use. In this case we're using an EOA signer:
-
-```ts
-import { AlchemyProvider } from "@alchemy/aa-alchemy";
-import { LightSmartContractAccount } from "@alchemy/aa-accounts";
-import { LocalAccountSigner, type SmartAccountSigner } from "@alchemy/aa-core";
-import { sepolia } from "viem/chains";
-import { withAlchemyGasManager } from "@alchemy/aa-alchemy"; // Importing `withAlchemyGasManager` from `aa-alchemy` that will be used to link Gas Manager to the Light Account for gas sponsorship
-
-const chain = sepolia; // [!code focus:4]
-const PRIVATE_KEY = "0xYourEOAPrivateKey";
-const eoaSigner: SmartAccountSigner =
-  LocalAccountSigner.privateKeyToAccountSigner(`0x${PRIVATE_KEY}`);
-const entryPointAddress = "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789";
-
-const GAS_MANAGER_POLICY_ID = "YourGasManagerPolicyId"; // Gas Manager policy id, get yours at https://dashboard.alchemy.com/gas-manager/policy/create
-
-let provider = new AlchemyProvider({
-  apiKey: "ALCHEMY_API_KEY", // replace with your alchemy api key of the Alchemy app associated with the Gas Manager, get yours at https://dashboard.alchemy.com/
-  chain,
-  entryPointAddress: entryPointAddress,
-}).connect(
-  (rpcClient) =>
-    new LightSmartContractAccount({
-      entryPointAddress: entryPointAddress,
-      chain: rpcClient.chain,
-      owner: eoaSigner,
-      factoryAddress: "0xDC31c846DA74400C732edb0fE888A2e4ADfBb8b1",
-      rpcClient,
-    })
-);
-
-// linking provider to Gas Manager so that the user operations sent using this provider are sponsored by the Gas Manager
-provider = withAlchemyGasManager(provider, {
-  policyId: GAS_MANAGER_POLICY_ID,
-  entryPoint: entryPointAddress,
-});
-
-// sends a sponsored user operation from your smart account
-const { hash } = await provider.sendUserOperation({
-  target: "0xTargetAddress",
-  data: "0xCallData",
-  value: 0n, // value: bigint or undefined
-});
-```
-
-### 3. Setting Up Your Gas Policy
-
-Gas policies are rules defined by you that determine when you will sponsor a user operation. You can create a gas policy by going to the [Gas Manager](https://dashboard.alchemy.com/gas-manager) and clicking on the ["Create Policy" button](https://dashboard.alchemy.com/gas-manager/policy/create). Once you've created a policy, you'll be able to see its policy id in the Gas Manager dashboard. You'll need this policy id to link your provider to the Gas Manager.
+Gas manager policies are rules defined by you that determine when you will sponsor a user operation. You can create a gas policy by going to the [Gas Manager](https://dashboard.alchemy.com/gas-manager) and clicking on the ["Create Policy" button](https://dashboard.alchemy.com/gas-manager/policy/create). Once you've created a policy, you'll be able to see its policy id in the Gas Manager dashboard. You'll need this policy id to link your provider to the Gas Manager.
 
 Replace `GAS_MANAGER_POLICY_ID` with your policy id in the code snippet below. To learn more about gas policies and how to create them, check out the guide on [creating gas policies](https://docs.alchemy.com/docs/setup-a-gas-manager-policy).
 
@@ -125,17 +39,14 @@ import { AlchemyProvider } from "@alchemy/aa-alchemy";
 import { LightSmartContractAccount } from "@alchemy/aa-accounts";
 import { LocalAccountSigner, type SmartAccountSigner } from "@alchemy/aa-core";
 import { sepolia } from "viem/chains";
-import { withAlchemyGasManager } from "@alchemy/aa-alchemy"; // Importing `withAlchemyGasManager` from `aa-alchemy` that will be used to link Gas Manager to the Light Account for gas sponsorship
 
 const chain = sepolia;
 const PRIVATE_KEY = "0xYourEOAPrivateKey";
 const eoaSigner: SmartAccountSigner =
-  LocalAccountSigner.privateKeyToAccountSigner(`0x${PRIVATE_KEY}`);
+  LocalAccountSigner.privateKeyToAccountSigner(PRIVATE_KEY);
 const entryPointAddress = "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789";
 
-const GAS_MANAGER_POLICY_ID = "YourGasManagerPolicyId"; // Gas Manager policy id, get yours at https://dashboard.alchemy.com/gas-manager/policy/create // [!code focus]
-
-let provider = new AlchemyProvider({
+const provider = new AlchemyProvider({
   apiKey: "ALCHEMY_API_KEY", // replace with your alchemy api key of the Alchemy app associated with the Gas Manager, get yours at https://dashboard.alchemy.com/
   chain,
   entryPointAddress: entryPointAddress,
@@ -149,9 +60,11 @@ let provider = new AlchemyProvider({
       rpcClient,
     })
 );
+
+const GAS_MANAGER_POLICY_ID = "YourGasManagerPolicyId"; // Gas Manager policy id, get yours at https://dashboard.alchemy.com/gas-manager/policy/create // [!code focus:7]
 
 // linking provider to Gas Manager so that the user operations sent using this provider are sponsored by the Gas Manager
-provider = withAlchemyGasManager(provider, {
+provider.withAlchemyGasManager({
   policyId: GAS_MANAGER_POLICY_ID,
   entryPoint: entryPointAddress,
 });
@@ -164,31 +77,25 @@ const { hash } = await provider.sendUserOperation({
 });
 ```
 
-### 4. Initializing the Provider
+Here we are creating a gas manager policy and linking it to the provider. This ensures that user operations sent using this provider are sponsored.
 
-Create your provider instance that will be used to send user operations and interact with the blockchain. You'll need to replace `ALCHEMY_API_KEY` with your unique Alchemy API key. You can get your API key from the [Alchemy dashboard](https://dashboard.alchemy.com/).
+### 3. Sending the Sponsored UserOperation
 
-::: tip Note
-You will need to use the Alchemy API key of the Alchemy app associated with the Gas Policy being used. You can check which app is associated with the Gas Policy by going to the [Gas Manager dashboard](https://dashboard.alchemy.com/gas-manager).
-:::
+It's finally time to send the user operation! We can simply call `sendUserOperation` on the provider to send a user operation as we would normally do. The only difference is that the user operation will be sponsored by the Gas Manager because we've already linked the provider to the Gas Manager Policy:
 
 ```ts
 import { AlchemyProvider } from "@alchemy/aa-alchemy";
 import { LightSmartContractAccount } from "@alchemy/aa-accounts";
 import { LocalAccountSigner, type SmartAccountSigner } from "@alchemy/aa-core";
 import { sepolia } from "viem/chains";
-import { withAlchemyGasManager } from "@alchemy/aa-alchemy"; // Importing `withAlchemyGasManager` from `aa-alchemy` that will be used to link Gas Manager to the Light Account for gas sponsorship
 
 const chain = sepolia;
 const PRIVATE_KEY = "0xYourEOAPrivateKey";
 const eoaSigner: SmartAccountSigner =
-  LocalAccountSigner.privateKeyToAccountSigner(`0x${PRIVATE_KEY}`);
+  LocalAccountSigner.privateKeyToAccountSigner(PRIVATE_KEY);
 const entryPointAddress = "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789";
 
-const GAS_MANAGER_POLICY_ID = "YourGasManagerPolicyId"; // Gas Manager policy id, get yours at https://dashboard.alchemy.com/gas-manager/policy/create //
-
-let provider = new AlchemyProvider({
-  // [!code focus:14]
+const provider = new AlchemyProvider({
   apiKey: "ALCHEMY_API_KEY", // replace with your alchemy api key of the Alchemy app associated with the Gas Manager, get yours at https://dashboard.alchemy.com/
   chain,
   entryPointAddress: entryPointAddress,
@@ -202,105 +109,11 @@ let provider = new AlchemyProvider({
       rpcClient,
     })
 );
+
+const GAS_MANAGER_POLICY_ID = "YourGasManagerPolicyId"; // Gas Manager policy id, get yours at https://dashboard.alchemy.com/gas-manager/policy/create
 
 // linking provider to Gas Manager so that the user operations sent using this provider are sponsored by the Gas Manager
-provider = withAlchemyGasManager(provider, {
-  policyId: GAS_MANAGER_POLICY_ID,
-  entryPoint: entryPointAddress,
-});
-
-// sends a sponsored user operation from your smart account
-const { hash } = await provider.sendUserOperation({
-  target: "0xTargetAddress",
-  data: "0xCallData",
-  value: 0n, // value: bigint or undefined
-});
-```
-
-### 5. Linking Provider to the Gas Policy
-
-Use `withAlchemyGasManager` to link your provider to the gas policy. This ensures that user operations sent using this provider are sponsored:
-
-```ts
-import { AlchemyProvider } from "@alchemy/aa-alchemy";
-import { LightSmartContractAccount } from "@alchemy/aa-accounts";
-import { LocalAccountSigner, type SmartAccountSigner } from "@alchemy/aa-core";
-import { sepolia } from "viem/chains";
-import { withAlchemyGasManager } from "@alchemy/aa-alchemy"; // Importing `withAlchemyGasManager` from `aa-alchemy` that will be used to link Gas Manager to the Light Account for gas sponsorship
-
-const chain = sepolia;
-const PRIVATE_KEY = "0xYourEOAPrivateKey";
-const eoaSigner: SmartAccountSigner =
-  LocalAccountSigner.privateKeyToAccountSigner(`0x${PRIVATE_KEY}`);
-const entryPointAddress = "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789";
-
-const GAS_MANAGER_POLICY_ID = "YourGasManagerPolicyId"; // Gas Manager policy id, get yours at https://dashboard.alchemy.com/gas-manager/policy/create //
-
-let provider = new AlchemyProvider({
-  apiKey: "ALCHEMY_API_KEY", // replace with your alchemy api key of the Alchemy app associated with the Gas Manager, get yours at https://dashboard.alchemy.com/
-  chain,
-  entryPointAddress: entryPointAddress,
-}).connect(
-  (rpcClient) =>
-    new LightSmartContractAccount({
-      entryPointAddress: entryPointAddress,
-      chain: rpcClient.chain,
-      owner: eoaSigner,
-      factoryAddress: "0xDC31c846DA74400C732edb0fE888A2e4ADfBb8b1",
-      rpcClient,
-    })
-);
-
-// linking provider to Gas Policy so that the user operations sent using this provider are sponsored by the Gas Manager // [!code focus:5]
-provider = withAlchemyGasManager(provider, {
-  policyId: GAS_MANAGER_POLICY_ID,
-  entryPoint: entryPointAddress,
-});
-
-// sends a sponsored user operation from your smart account
-const { hash } = await provider.sendUserOperation({
-  target: "0xTargetAddress",
-  data: "0xCallData",
-  value: 0n, // value: bigint or undefined
-});
-```
-
-### 6. Sending a Sponsored User Operation
-
-Now, you can send a sponsored user operation from your smart account:
-
-```ts
-import { AlchemyProvider } from "@alchemy/aa-alchemy";
-import { LightSmartContractAccount } from "@alchemy/aa-accounts";
-import { LocalAccountSigner, type SmartAccountSigner } from "@alchemy/aa-core";
-import { sepolia } from "viem/chains";
-import { withAlchemyGasManager } from "@alchemy/aa-alchemy"; // Importing `withAlchemyGasManager` from `aa-alchemy` that will be used to link Gas Manager to the Light Account for gas sponsorship
-
-const chain = sepolia;
-const PRIVATE_KEY = "0xYourEOAPrivateKey";
-const eoaSigner: SmartAccountSigner =
-  LocalAccountSigner.privateKeyToAccountSigner(`0x${PRIVATE_KEY}`);
-const entryPointAddress = "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789";
-
-const GAS_MANAGER_POLICY_ID = "YourGasManagerPolicyId"; // Gas Manager policy id, get yours at https://dashboard.alchemy.com/gas-manager/policy/create //
-
-let provider = new AlchemyProvider({
-  apiKey: "ALCHEMY_API_KEY", // replace with your alchemy api key of the Alchemy app associated with the Gas Manager, get yours at https://dashboard.alchemy.com/
-  chain,
-  entryPointAddress: entryPointAddress,
-}).connect(
-  (rpcClient) =>
-    new LightSmartContractAccount({
-      entryPointAddress: entryPointAddress,
-      chain: rpcClient.chain,
-      owner: eoaSigner,
-      factoryAddress: "0xDC31c846DA74400C732edb0fE888A2e4ADfBb8b1",
-      rpcClient,
-    })
-);
-
-// linking provider to Gas Policy so that the user operations sent using this provider are sponsored by the Gas Manager
-provider = withAlchemyGasManager(provider, {
+provider.withAlchemyGasManager({
   policyId: GAS_MANAGER_POLICY_ID,
   entryPoint: entryPointAddress,
 });
