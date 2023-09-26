@@ -45,8 +45,8 @@ export default defineConfig({
           {
             text: "Choosing a Signer",
             base: "/smart-accounts/signers",
+            link: "/overview",
             items: [
-              { text: "Overview", link: "/overview" },
               { text: "Magic.Link", link: "/magic-link" },
               { text: "Web3Auth", link: "/web3auth" },
               { text: "Externally Owned Account", link: "/eoa" },
