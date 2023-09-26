@@ -26,6 +26,9 @@ const provider = new AlchemyProvider({
     })
 );
 
+// Logging the smart account address -- please fund this address with some SepoliaETH in order for the user operations to be executed successfully
+provider.getAddress().then((address: string) => console.log(address));
+
 // Send a user operation from your smart contract account
 const { hash } = await provider.sendUserOperation({
   target: "0xTargetAddress", // Replace with the desired target address
