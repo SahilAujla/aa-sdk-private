@@ -24,7 +24,7 @@ Assuming you already have a project set up with the required packages installed,
 
 The first step is to create the provider which can be used to send user operations and interact with the blockchain. The code snippet below shows how to create a provider using `AlchemyProvider`:
 
-<<< @/snippets/alchemy-provider.ts
+<<< @/snippets/provider.ts
 
 You'll need to replace `ALCHEMY_API_KEY` with your unique Alchemy API key. You can get your API key from the [Alchemy dashboard](https://dashboard.alchemy.com/).
 
