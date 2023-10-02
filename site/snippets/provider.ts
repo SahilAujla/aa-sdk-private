@@ -9,7 +9,7 @@ const eoaSigner: SmartAccountSigner =
   LocalAccountSigner.privateKeyToAccountSigner(`0x${PRIVATE_KEY}`);
 const entryPointAddress = "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789";
 
-const provider = new AlchemyProvider({
+export const provider = new AlchemyProvider({
   apiKey: "ALCHEMY_API_KEY", // replace with your alchemy api key of the Alchemy app associated with the Gas Manager, get yours at https://dashboard.alchemy.com/
   chain,
   entryPointAddress: entryPointAddress,
