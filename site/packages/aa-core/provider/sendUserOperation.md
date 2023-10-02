@@ -62,10 +62,12 @@ provider.sendUserOperation([
 
 A Promise containing the hash of the user operation and the request that was sent.
 
+**Note**: The hash is not the User Operation Receipt. The user operation still needs to be bundled and included in a block. The user operation result is more of a proof of submission than a receipt.
+
 ## Parameters
 
 ### `UserOperationCallData | UserOperationCallData[]`
 
-- `target: Address` -- the target of the call (equivalent to `to` in a transaction)
-- `data: Hex` -- can be either `0x` or a call data string
-- `value?: bigint` -- optionally, set the value in wei you want to send to the target
+- `target: Address` - the target of the call (equivalent to `to` in a transaction)
+- `data: Hex` - can be either `0x` or a call data string
+- `value?: bigint` - optionally, set the value in wei you want to send to the target
