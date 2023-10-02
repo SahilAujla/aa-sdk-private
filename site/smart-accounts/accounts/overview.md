@@ -26,7 +26,7 @@ Here's a snippet that demonstrates how to work with the Light Account using Acco
 
 <!--@include: ../../getting-started.md{56,68}-->
 
-## The Promise of Modular Account Implementation
+## Modular Account Implementation
 
 The Alchemy team is actively developing the Modular Account Implementation, which adheres to the [ERC-6900](https://eips.ethereum.org/EIPS/eip-6900) standard. It's set to include all the features of the Light Account and additional functionalities. Additionally, because ERC-6900 is ERC-4337 compliant, the Modular Account Implementation is well-suited to the ERC-4337 ecosystem. The `LightAccount` design is forward-compatible with `ModularAccount`. Until `ModularAccount` is available, it's a good practice to use `LightAccount`.
 
