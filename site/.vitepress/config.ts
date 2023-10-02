@@ -45,13 +45,17 @@ export default defineConfig({
           {
             text: "Choosing a Signer",
             base: "/smart-accounts/signers",
+            link: "/overview",
             items: [
               { text: "Magic.Link", link: "/magic-link" },
+              { text: "Turnkey", link: "/turnkey" },
               { text: "Web3Auth", link: "/web3auth" },
               { text: "Externally Owned Account", link: "/eoa" },
+              { text: "Using Your Own", link: "/using-your-own" },
+              { text: "Contributing", link: "/contributing" },
             ],
           },
-          { text: "Sponsoring Gas", items: [] },
+          { text: "Sponsoring Gas", link: "/sponsoring-gas" },
           { text: "Batching Transactions", link: "/batching-transactions" },
           { text: "Transferring Ownership", link: "/transferring-ownership" },
         ],
@@ -65,14 +69,100 @@ export default defineConfig({
         items: [
           {
             text: "Provider",
+            collapsed: true,
             link: "/introduction",
             base: "/packages/aa-core/provider",
-            items: [{ text: "sendUserOperation", link: "/sendUserOperation" }],
+            items: [
+              { text: "sendUserOperation", link: "/sendUserOperation" },
+              {
+                text: "waitForUserOperationTransaction",
+                link: "/waitForUserOperationTransaction",
+              },
+              {
+                text: "getUserOperationByHash",
+                link: "/getUserOperationByHash",
+              },
+            ],
           },
           { text: "Accounts" },
-          { text: "Signers" },
-          { text: "Public Client" },
-          { text: "Utilities" },
+          {
+            text: "Signers",
+            base: "/packages/aa-core/signers",
+            collapsed: true,
+            items: [
+              { text: "WalletClientSigner", link: "/wallet-client" },
+              { text: "LocalAccountSigner", link: "/local-account" },
+              {
+                text: "Utils",
+                collapsed: true,
+                base: "/packages/aa-core/signers/utils",
+                items: [
+                  { text: "wrapWith6492", link: "/wrapWith6492" },
+                  {
+                    text: "verifyEIP6492Signature",
+                    link: "/verifyEIP6492Signature",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            text: "Public Client",
+            link: "/",
+            base: "/packages/aa-core/client",
+            collapsed: true,
+            items: [
+              {
+                text: "Actions",
+                collapsed: true,
+                base: "/packages/aa-core/client/actions",
+                items: [
+                  { text: "sendUserOperation", link: "/sendUserOperation" },
+                  {
+                    text: "estimateUserOperationGas",
+                    link: "/estimateUserOperationGas",
+                  },
+                  {
+                    text: "getUserOperationByHash",
+                    link: "/getUserOperationByHash",
+                  },
+                  {
+                    text: "getUserOperationReceipt",
+                    link: "/getUserOperationReceipt",
+                  },
+                  {
+                    text: "getSupportedEntryPoints",
+                    link: "/getSupportedEntryPoints",
+                  },
+                ],
+              },
+              {
+                text: "createPublicErc4337Client",
+                link: "/createPublicErc4337Client",
+              },
+              {
+                text: "createPublicErc4337FromClient",
+                link: "/createPublicErc4337FromClient",
+              },
+              {
+                text: "erc4337ClientActions",
+                link: "/erc4337ClientActions",
+              },
+            ],
+          },
+          {
+            text: "Utilities",
+            base: "/packages/aa-core/utils",
+            collapsed: true,
+            items: [
+              { text: "asyncPipe", link: "/asyncPipe" },
+              { text: "deepHexlify", link: "/deepHexlify" },
+              { text: "defineReadOnly", link: "/defineReadOnly" },
+              { text: "getChain", link: "/getChain" },
+              { text: "getUserOperationHash", link: "/getUserOperationHash" },
+              { text: "resolveProperties", link: "/resolveProperties" },
+            ],
+          },
         ],
       },
       {
@@ -80,7 +170,35 @@ export default defineConfig({
         base: "/packages/aa-alchemy",
         link: "/",
         collapsed: true,
-        items: [],
+        items: [
+          {
+            text: "AlchemyProvider",
+            link: "/introduction",
+            base: "/packages/aa-alchemy/provider",
+            items: [
+              { text: "gasEstimator", link: "/gasEstimator" },
+              { text: "withAlchemyGasManager", link: "/withAlchemyGasManager" },
+            ],
+          },
+          {
+            text: "Middleware",
+            link: "/introduction",
+            base: "/packages/aa-alchemy/middleware",
+            items: [
+              {
+                text: "withAlchemyGasFeeEstimator",
+                link: "/withAlchemyGasFeeEstimator",
+              },
+              { text: "withAlchemyGasManager", link: "/withAlchemyGasManager" },
+            ],
+          },
+          {
+            text: "Utils",
+            link: "/introduction",
+            base: "/packages/aa-alchemy/utils",
+            items: [{ text: "SupportedChains", link: "/supportedChains" }],
+          },
+        ],
       },
       {
         text: "aa-accounts",
@@ -88,11 +206,23 @@ export default defineConfig({
         link: "/",
         base: "/packages/aa-accounts",
         items: [
-          { text: "Contributing", link: "/contributing" },
           {
             text: "LightSmartContractAccount",
-            link: "/light-account",
+            link: "/introduction",
+            base: "/packages/aa-accounts/light-account",
+            items: [
+              { text: "signMessageWith6492", link: "/signMessageWith6492" },
+              { text: "signTypedData", link: "/signTypedData" },
+              { text: "signTypedDataWith6492", link: "/signTypedDataWith6492" },
+              { text: "getOwner", link: "/getOwner" },
+              {
+                text: "encodeTransferOwnership",
+                link: "/encodeTransferOwnership",
+              },
+              { text: "transferOwnership", link: "/transferOwnership" },
+            ],
           },
+          { text: "Contributing", link: "/contributing" },
         ],
       },
       {
