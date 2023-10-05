@@ -77,7 +77,7 @@ In the future, Account Kit will support paying gas in stablecoins like USDC and 
 
 ## Batch transactions
 
-Streamline multi-step actions into a single click. Using the Bundler API, you can effortlessly [batch multiple transactions](https://docs.alchemy.com/docs/erc-4337-bundle-vs-batch) into a single operation. For example, imagine a normal user who wants to mint two NFTs as part of your giveaway. You can submit a single user operation that batches the following transactions together all with a single click and sponsored gas:
+Streamline multi-step actions into a single click. Using the Bundler API, you can effortlessly [batch multiple transactions](smart-accounts/batching-transactions) into a single operation. For example, imagine a normal user who wants to mint two NFTs as part of your giveaway. You can submit a single user operation that batches the following transactions together all with a single click and sponsored gas:
 
 1. Deploy a smart account contract for the user
 2. Mint NFT #1
