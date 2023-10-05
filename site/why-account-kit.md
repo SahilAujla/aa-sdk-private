@@ -59,9 +59,9 @@ Streamline your sign up flow with simple web2 login options supported by Account
 - Self-custodial wallets like MetaMask or Ledger
 - and more
 
-Account Kit integrates all the leading wallet Signers with bespoke integration guides for Magic.link, web3auth, Turnkey, Privy, Lit Protocol, Fireblocks, Portal, and Capsule. Account Kit even supports self-custodial wallets like Metamask or Ledger. Users can even change their signer later via Account Kit’s ownership transfer functionality.
+Account Kit integrates all the leading wallet Signers with bespoke integration guides for [Magic.link](/smart-accounts/signers/magic-link), [web3auth](/smart-accounts/signers/magic-link), [Turnkey](/smart-accounts/signers/turnkey), Privy, Lit Protocol, Fireblocks, Portal, and [Capsule](/smart-accounts/signers/capsule). Account Kit even supports self-custodial wallets like Metamask or Ledger. Users can even change their signer later via Account Kit’s [ownership transfer](/smart-accounts/transferring-ownership) functionality.
 
-Learn how to choose the right signer for your use case in this doc.
+Learn [how to choose the right signer for your use case in this doc](/smart-accounts/signers/overview).
 
 ## Sponsor gas
 
@@ -69,9 +69,9 @@ Account Kit removes the greatest barrier to entry of all: gas fees.
 
 Countless crypto-curious newcomers have browsed NFTs, but many of them gave up before actually buying one. Even if the NFT is free, gas fees are a major deterrent because buying crypto for the first time is intimidating. You need to put down a credit card, submit personal information like an ID, and then transfer tokens from an exchange. Millions of users have dropped off and abandoned web3 at this step.
 
-With Account Kit you can remove this barrier by sponsoring gas fees for transactions — especially the first one! Get the user to your app’s magic moment as quickly, and help them fall in love with your product before asking them to deposit money.
+With Account Kit you can remove this barrier by [sponsoring gas fees](/smart-accounts/sponsoring-gas) for transactions — especially the first one! Get the user to your app’s magic moment as quickly, and help them fall in love with your product before asking them to deposit money.
 
-The [Gas Manager API](https://dashboard.alchemy.com/gas-manager) included in Account Kit is a powerful tool to sponsor gas. Sponsorship rules are programmable, giving you precise control over spending limits, allowlisted/blocklisted wallet addresses, and more through a REST API or an intuitive management dashboard.
+The [Gas Manager API](https://dashboard.alchemy.com/gas-manager) included in Account Kit is a powerful tool to [sponsor gas](/smart-accounts/sponsoring-gas). Sponsorship rules are programmable, giving you precise control over spending limits, allowlisted/blocklisted wallet addresses, and more through a REST API or an intuitive management dashboard.
 
 In the future, Account Kit will support paying gas in stablecoins like USDC and other ERC20s. If you’re interested those features, [contact us](mailto:account-abstraction@alchemy.com) to chat.
 
