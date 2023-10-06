@@ -14,7 +14,7 @@ head:
 
 # withFeeDataGetter
 
-Override the default fee data getter middleware. This middleware is used for setting the `maxFeePerGas` and `maxPriorityFeePerGas` fields on the `UserOperation` prior to its execution.
+Override the default `feeDataGetter` middleware. This middleware is used for setting the `maxFeePerGas` and `maxPriorityFeePerGas` fields on the `UserOperation` prior to its execution.
 
 ## Usage
 
@@ -68,7 +68,7 @@ displayModifiedFeeData();
 
 ### `ISmartAccountProvider`
 
-An updated instance of the provider, which now uses the overridden fee data getter middleware.
+An updated instance of the provider, which now uses the overridden `feeDataGetter` middleware.
 
 ## Parameters
 
