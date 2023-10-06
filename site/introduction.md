@@ -40,8 +40,6 @@ The `aa-sdk` is modular at every layer of the stack and can be easily extended t
 
 Get started with `aa-sdk` in our [Getting Started guide](/getting-started) or checkout the [open source repo](https://github.com/alchemyplatform/aa-sdk).
 
-![AA SDK](./assets/images/aa-sdk.png)
-
 ### LightAccount
 
 `LightAccount` is a secure, gas-optimized, ERC-4337 smart contract account.
