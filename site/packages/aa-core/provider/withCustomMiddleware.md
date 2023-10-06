@@ -23,8 +23,27 @@ Adds a function to the end of the middleware call stack before signature verific
 ```ts [example.ts]
 import { provider } from "./provider";
 
-// [!code focus:99]
+// Define the custom middleware override function // [!code focus:99]
+// The function below just changes the call data for the userOp
+// But you can do anything you want here
+const CustomMiddlewareOverrideFunction = async (uoStruct) => {
+  uoStruct.callData = "0xNEW_CALL_DATA"; // Changing the call data
+  return uoStruct;
+};
+
+// Add the custom middleware
 provider.withCustomMiddleware(CustomMiddlewareOverrideFunction);
+
+// Defining the user operation data
+const userOpData = {
+  target: "0xTARGET_ADDRESS", // Replace with the actual target address
+  data: "0xSOME_DATA", // Replace with the actual data
+};
+
+// Call buildUserOperation to see the modified callData in the resulting UO
+provider.buildUserOperation(userOpData).then((resultingUO) => {
+  console.log("Modified callData:", resultingUO.callData);
+});
 ```
 
 <<< @/snippets/provider.ts
