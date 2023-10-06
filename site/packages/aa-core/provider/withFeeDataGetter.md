@@ -33,7 +33,7 @@ provider.withFeeDataGetter(FeeDataMiddlewareOverrideFunction);
 
 ### `ISmartAccountProvider`
 
-An updated instance of the provider, which now uses the overridden fee data getter middleware.
+An updated instance of the provider, which now uses the overridden `feeDataGetter` middleware.
 
 ## Parameters
 
