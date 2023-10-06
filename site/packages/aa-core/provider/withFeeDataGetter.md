@@ -23,7 +23,42 @@ Override the default fee data getter middleware. This middleware is used for set
 ```ts [example.ts]
 import { provider } from "./provider";
 
+// Define the FeeDataMiddlewareOverrideFunction // [!code focus:99]
+const FeeDataMiddlewareOverrideFunction = async (uoStruct) => {
+  // For demonstration purposes, we're setting hardcoded fee values.
+  // In a real-world scenario, you might fetch these values from a service
+  // Or make other determinations.
+
+  // Setting the max fee per gas
+  uoStruct.maxFeePerGas = "0x500";
+
+  // Setting the max priority fee per gas
+  uoStruct.maxPriorityFeePerGas = "0x50";
+
+  return uoStruct;
+};
+
+// Integrate the custom fee data middleware with the provider
 provider.withFeeDataGetter(FeeDataMiddlewareOverrideFunction);
+
+// Define the user operation data
+const userOpData = {
+  target: "0xTARGET_ADDRESS", // Replace with your actual target address
+  data: "0xSOME_DATA", // Replace with your actual data
+};
+
+// function to call buildUserOperation and log the modified fee data fields
+async function displayModifiedFeeData() {
+  const resultingUO = await provider.buildUserOperation(userOpData);
+  console.log("Modified maxFeePerGas:", resultingUO.maxFeePerGas);
+  console.log(
+    "Modified maxPriorityFeePerGas:",
+    resultingUO.maxPriorityFeePerGas
+  );
+}
+
+// Call the function to display the modified fee data
+displayModifiedFeeData();
 ```
 
 <<< @/snippets/provider.ts
