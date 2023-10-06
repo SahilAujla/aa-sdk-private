@@ -14,7 +14,7 @@ head:
 
 # withCustomMiddleware
 
-This method adds a final middleware step to the middleware stack that runs right before signature verification. It can be utilized when there's an RPC that fulfills most of the functionalities of the other middlewares. Instead of chaining multiple RPC calls via the default middlewares, you can delegate the work to that RPC.
+Adds a function to the end of the middleware call stack before signature verification. It can be used to override or add additional functionality. Like modifying the user operation, making an additional RPC call, or logging data.
 
 ## Usage
 
