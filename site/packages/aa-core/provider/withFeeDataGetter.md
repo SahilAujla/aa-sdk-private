@@ -1,3 +1,17 @@
+---
+outline: deep
+head:
+  - - meta
+    - property: og:title
+      content: ISmartAccountProvider • withFeeDataGetter
+  - - meta
+    - name: description
+      content: Overview of the withFeeDataGetter method on ISmartAccountProvider
+  - - meta
+    - property: og:description
+      content: Overview of the withFeeDataGetter method on ISmartAccountProvider
+---
+
 # withFeeDataGetter
 
 Override the default fee data getter middleware. This middleware is used for setting the `maxFeePerGas` and `maxPriorityFeePerGas` fields on the `UserOperation` prior to its execution.
