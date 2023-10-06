@@ -40,10 +40,14 @@ const userOpData = {
   data: "0xSOME_DATA", // Replace with the actual data
 };
 
-// Call buildUserOperation to see the modified callData in the resulting UO
-provider.buildUserOperation(userOpData).then((resultingUO) => {
+// function to call buildUserOperation and log the modified callData
+async function displayModifiedCallData() {
+  const resultingUO = await provider.buildUserOperation(userOpData);
   console.log("Modified callData:", resultingUO.callData);
-});
+}
+
+// Call the function
+displayModifiedCallData();
 ```
 
 <<< @/snippets/provider.ts
