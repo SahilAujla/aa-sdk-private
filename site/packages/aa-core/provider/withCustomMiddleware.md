@@ -40,4 +40,14 @@ An updated instance of the provider, which now uses the custom middleware.
 
 ### `override: AccountMiddlewareFn`
 
-- The User Operation (UO) transform function that will run as the custom middleware.
+The User Operation (UO) transform function that will run as the custom middleware.
+
+## `customMiddleware`
+
+The `customMiddleware` is a readonly field that represents the final middleware step in the stack. It allows overriding any of the results returned by previous middlewares, ensuring customized processing of user operations.
+
+You can access the current middleware configuration for the provider via:
+
+```ts
+const currentMiddleware = provider.customMiddleware;
+```
