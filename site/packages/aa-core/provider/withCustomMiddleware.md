@@ -6,10 +6,10 @@ head:
       content: ISmartAccountProvider • withCustomMiddleware
   - - meta
     - name: description
-      content: Overview of the withCustomMiddleware method on ISmartAccountProvider
+      content: Overview of the withCustomMiddleware method and accessing the customMiddleware readonly field on ISmartAccountProvider
   - - meta
     - property: og:description
-      content: Overview of the withCustomMiddleware method on ISmartAccountProvider
+      content: Overview of the withCustomMiddleware method and accessing the customMiddleware readonly field on ISmartAccountProvider
 ---
 
 # withCustomMiddleware
