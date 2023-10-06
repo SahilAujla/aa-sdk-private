@@ -14,7 +14,7 @@ head:
 
 # withFeeDataGetter
 
-Override the default `feeDataGetter` middleware. This middleware is used for setting the `maxFeePerGas` and `maxPriorityFeePerGas` fields on the `UserOperation` prior to its execution.
+Overrides the default [`feeDataGetter`](#feedatagetter) middleware. This middleware is used for setting the `maxFeePerGas` and `maxPriorityFeePerGas` fields on the `UserOperation` prior to its execution.
 
 ## Usage
 
