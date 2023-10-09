@@ -47,18 +47,12 @@ const userOpData = {
   data: "0xSOME_DATA", // Replace with your actual data
 };
 
-// function to call buildUserOperation and log the modified fee data fields
-async function displayModifiedFeeData() {
-  const resultingUO = await provider.buildUserOperation(userOpData);
-  console.log("Modified maxFeePerGas:", resultingUO.maxFeePerGas);
-  console.log(
-    "Modified maxPriorityFeePerGas:",
-    resultingUO.maxPriorityFeePerGas
-  );
-}
-
-// Call the function to display the modified fee data
-displayModifiedFeeData();
+const resultingUO = await provider.buildUserOperation(userOpData);
+console.log("Modified maxFeePerGas:", resultingUO.maxFeePerGas);
+console.log(
+  "Modified maxPriorityFeePerGas:",
+  resultingUO.maxPriorityFeePerGas
+);
 ```
 
 <<< @/snippets/provider.ts
