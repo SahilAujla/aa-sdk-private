@@ -16,7 +16,7 @@ head:
 
 ## The Problem
 
-It’s way too hard for new users to start using your app. Today, users have to jump through hoops before they submit their first transaction:
+It’s way too hard for new users to start using web3 apps. Today, users have to jump through hoops before they submit their first transaction:
 
 1. Download a wallet app or extension
 2. Back up the seed phrase on paper
@@ -33,7 +33,7 @@ Account Kit provides all the tools you need to onboard the next 1B users with a 
 
 With Account Kit, you can create a **smart account** for every user. Smart accounts are smart contract wallets that leverage account abstraction to radically simplify every step of the onboarding experience. Now, a new user will:
 
-1. Create an account natively in your app with no third-party downloads
+1. Create a smart account directly in your app without third-party downloads
 2. Sign up with an email, social login, passkey, or self-custodial wallet
 3. Submit transactions without needing ETH in their account for gas
 4. Submit transactions in the background without leaving your app
@@ -46,7 +46,7 @@ Account Kit was designed to make it easy for every developer to leverage account
 
 ## Your app, your UX
 
-With Account Kit, you can design every step of the user experience from signup to checkout, natively in your app. Instead of sending a signature request to a third-party wallet, you can display the confirmation natively in your app or even submit the transaction invisibly in the background. With this level of control, wallets fade into the background. You can curate exactly what information to show the user to help them complete their journey in the app.
+With Account Kit, you can design every step of the user experience from signup to checkout natively in your app. Replace third-party wallet interactions with native confirmations and background transactions. Curate the right information to display and abstract away the details. Use Account Kit to streamline the experience and improve engagement with your app.
 
 ## Familiar, secure login
 
@@ -67,7 +67,7 @@ Learn [how to choose the right signer for your use case in this doc](/smart-acco
 
 Account Kit removes the greatest barrier to entry of all: gas fees.
 
-Countless crypto-curious newcomers have browsed NFTs, but many of them gave up before actually buying one. Even if the NFT is free, gas fees are a major deterrent because buying crypto for the first time is intimidating. You need to put down a credit card, submit personal information like an ID, and then transfer tokens from an exchange. Millions of users have dropped off and abandoned web3 at this step.
+Many newcomers give up on web3 before submitting their first transaction. It's daunting to buy crypto for the first time, especially before trying the app! Gas fees -- even cheap ones on L2 -- discourage newcomers from trying your app.
 
 With Account Kit you can remove this barrier by [sponsoring gas fees](/smart-accounts/sponsoring-gas) for transactions — especially the first one! Get the user to your app’s magic moment as quickly, and help them fall in love with your product before asking them to deposit money.
 
