@@ -41,13 +41,8 @@ const userOpData = {
 };
 
 // function to call buildUserOperation and log the modified callData
-async function displayModifiedCallData() {
-  const resultingUO = await provider.buildUserOperation(userOpData);
-  console.log("Modified callData:", resultingUO.callData);
-}
-
-// Call the function
-displayModifiedCallData();
+const resultingUO = await provider.buildUserOperation(userOpData);
+console.log("Modified callData:", resultingUO.callData);
 ```
 
 <<< @/snippets/provider.ts

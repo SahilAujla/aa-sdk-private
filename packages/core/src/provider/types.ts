@@ -263,7 +263,7 @@ export interface ISmartAccountProvider<
   withFeeDataGetter: (override: FeeDataMiddleware) => this;
 
   /**
-   * Adds a function to the end of the middleware call stack before signature verification.
+   * Adds a function to the middleware call stack that runs before calling the paymaster middleware.
    * It can be used to override or add additional functionality.
    * Like modifying the user operation, making an additional RPC call, or logging data.
    *
