@@ -22,6 +22,10 @@ export default defineConfig({
       },
     ],
 
+    search: {
+      provider: "local",
+    },
+
     sidebar: [
       { text: "Introduction", link: "/introduction" },
       { text: "Why Account Kit", link: "/why-account-kit" },
@@ -51,7 +55,10 @@ export default defineConfig({
             link: "/overview",
             items: [
               { text: "Capsule", link: "/capsule" },
+              { text: "Lit Protocol", link: "/lit" },
               { text: "Magic.Link", link: "/magic-link" },
+              { text: "Portal", link: "/portal" },
+              { text: "Privy", link: "/privy" },
               { text: "Turnkey", link: "/turnkey" },
               { text: "Web3Auth", link: "/web3auth" },
               { text: "Externally Owned Account", link: "/eoa" },
@@ -197,7 +204,10 @@ export default defineConfig({
                 collapsed: true,
                 base: "/packages/aa-core/signers/utils",
                 items: [
-                  { text: "wrapWith6492", link: "/wrapWith6492" },
+                  {
+                    text: "wrapSignatureWith6492",
+                    link: "/wrapSignatureWith6492",
+                  },
                   {
                     text: "verifyEIP6492Signature",
                     link: "/verifyEIP6492Signature",
