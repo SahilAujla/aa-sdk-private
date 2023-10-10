@@ -540,5 +540,6 @@ export default defineConfig({
         defer: "defer",
       },
     ],
+    ["link", { rel: "icon", href: "/public/favicon.ico" }],
   ],
 });
