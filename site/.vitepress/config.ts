@@ -55,6 +55,7 @@ export default defineConfig({
             link: "/overview",
             items: [
               { text: "Capsule", link: "/capsule" },
+              { text: "Fireblocks", link: "/fireblocks" },
               { text: "Lit Protocol", link: "/lit" },
               { text: "Magic.Link", link: "/magic-link" },
               { text: "Portal", link: "/portal" },
@@ -191,7 +192,83 @@ export default defineConfig({
               },
             ],
           },
-          { text: "Accounts" },
+          {
+            text: "Accounts",
+            link: "/introduction",
+            base: "/packages/aa-core/accounts",
+            collapsed: true,
+            items: [
+              {
+                text: "Required Methods",
+                collapsed: true,
+                base: "/packages/aa-core/accounts/required",
+                items: [
+                  {
+                    text: "getDummySignature",
+                    link: "/getDummySignature",
+                  },
+                  {
+                    text: "getAccountInitCode",
+                    link: "/getAccountInitCode",
+                  },
+                  {
+                    text: "signMessage",
+                    link: "/signMessage",
+                  },
+                  {
+                    text: "encodeExecute",
+                    link: "/encodeExecute",
+                  },
+                ],
+              },
+              {
+                text: "Optional Methods",
+                collapsed: true,
+                base: "/packages/aa-core/accounts/optional",
+                items: [
+                  {
+                    text: "encodeBatchExecute",
+                    link: "/encodeBatchExecute",
+                  },
+                  {
+                    text: "signTypedData",
+                    link: "/signTypedData",
+                  },
+                  {
+                    text: "signMessageWith6492",
+                    link: "/signMessageWith6492",
+                  },
+                  {
+                    text: "signTypedDataWith6492",
+                    link: "/signTypedDataWith6492",
+                  },
+                ],
+              },
+              {
+                text: "Other Methods",
+                collapsed: true,
+                base: "/packages/aa-core/accounts/other",
+                items: [
+                  {
+                    text: "getAddress",
+                    link: "/getAddress",
+                  },
+                  {
+                    text: "getNonce",
+                    link: "/getNonce",
+                  },
+                  {
+                    text: "getDeplymentState",
+                    link: "/getDeplymentStates",
+                  },
+                  {
+                    text: "isAccountDeployed",
+                    link: "/isAccountDeployeds",
+                  },
+                ],
+              },
+            ],
+          },
           {
             text: "Signers",
             base: "/packages/aa-core/signers",
@@ -340,7 +417,7 @@ export default defineConfig({
               { text: "signMessageWith6492", link: "/signMessageWith6492" },
               { text: "signTypedData", link: "/signTypedData" },
               { text: "signTypedDataWith6492", link: "/signTypedDataWith6492" },
-              { text: "getOwner", link: "/getOwner" },
+              { text: "getOwnerAddress", link: "/getOwnerAddress" },
               {
                 text: "encodeTransferOwnership",
                 link: "/encodeTransferOwnership",
@@ -433,4 +510,13 @@ export default defineConfig({
       { icon: "github", link: "https://github.com/alchemyplatform/aa-sdk" },
     ],
   },
+  head: [
+    [
+      "script",
+      {
+        src: "https://static.alchemyapi.io/scripts/anayltics/alchemy-analytics.js",
+        defer: "defer",
+      },
+    ],
+  ],
 });

@@ -69,7 +69,9 @@ A Promise containing the signature of the typed data, additionally wrapped in ER
 
 ## Parameters
 
-### `params: SignTypedDataParams` -- the typed data to sign
+### `params: SignTypedDataParams`
+
+The typed data to sign
 
 - `domain: TypedDataDomain` -- The typed data domain
 - `types: Object` -- the type definitions for the typed data
