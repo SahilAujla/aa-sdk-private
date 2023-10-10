@@ -86,7 +86,7 @@ const { hash } = await provider.sendUserOperation(uo);
         </div>
       </div>
     </a>
-    <a rel="noopener noreferrer" href="./packages/overview.html">
+    <a rel="noopener noreferrer" href="./package-overview.html">
       <div
         class="flex flex-col w-[370px] p-[24px] gap-[24px] rounded-md text-white overflow-auto bg-gradient-3 group hover:scale-105 hover:opacity-90 transition duration-300 ease-in-out"
       >
